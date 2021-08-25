@@ -7,4 +7,3 @@ COP4331 Class Project 1 - "ConnectUs" virtual contact manager/Rolodex
 - Rafael (API/Backend)
 - Brandon (API)
 - Kevin (Frontend)
-
