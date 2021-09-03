@@ -44,7 +44,7 @@
         echo "<h1> YOU HAVE LOGGED IN </h1>";
 	}
 	
-    // ...........
+    // ..................................
 	function returnWithInfo($firstName, $lastName, $id) {
 		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
 		sendResultInfoAsJson( $retValue );
