@@ -1,6 +1,6 @@
 <?php
 
-    $contactInfo = getRequestInfo();
+    $deleteInfo = getRequestInfo();
  
     $conn = new mysqli("localhost", "ConnectUs", "COP4331connectus", "ConnectUs");
     if( $conn->connect_error )
@@ -9,26 +9,40 @@
     }
     else
     {
-        // $stmt = $conn->prepare("SELECT UserId from Users WHERE UserName=?");
-        // $stmt->bind_param("ss", $contactInfo["UserName"]);
-        // $stmt->execute();
-        // $userId = $stmt->get_result();
-        // $stmt->close();
-        // $conn->close();
-
         // DO THINGS
-        $stmt = $conn->prepare("DELETE FROM Contacts INNER JOIN Users ON Contacts.UserId = Users.UserId  WHERE UserId =? AND FirstName=? AND LastName =?");
+        $stmt = $conn->prepare("DELETE FROM Contacts 
+                                JOIN Users 
+                                ON Contacts.UserId = Users.UserId  
+                                WHERE UserId=? 
+                                AND FirstName=?
+                                AND MiddleName =? 
+                                AND LastName =?
+                                AND Address =?
+                                AND PhoneNumber =?
+                                AND Email =?
+                                AND Company =?
+                                AND Birthday =?
+                                ");
         $stmt->bind_param("ss",
-                            $userId["UserId"],
-                            $contactInfo["FirstName"],
-                            $contactInfo["LastName"]);
+                            $deleteInfo["UserId"],
+                            $deleteInfo["FirstName"],
+                            $deleteInfo["MiddleName"],
+                            $deleteInfo["LastName"],
+                            $deleteInfo["Address"],
+                            $deleteInfo["PhoneNumber"],
+                            $deleteInfo["Email"],
+                            $deleteInfo["Company"],
+                            $deleteInfo["Birthday"],
+                            );
         $stmt->execute();
         $result = $stmt->get_result();
 
-        if ($row = $result->fetch_assoc()) {
-            returnWithInfo($row);
+        if ($row = $result->fetch_assoc()) 
+        {
+            returnWithInfo("Contact deleted.");
         }
-        else {
+        else 
+        {
             returnWithError("Contact Not Found");
         }
         $stmt->close();
@@ -46,11 +60,9 @@
         echo $json;
     }
 
-    function returnWithInfo($contactInfo) 
+    function returnWithInfo($mssg) 
     {
-        $retValue = '{  "FirstName":"' . $contactInfo['FirstName'] . '",
-                        "LastName":"' . $contactInfo['LastName'] . '",
-                        "error":""}';
+        $retValue = '{"message":"' . $mssg . '"}';
         sendResultInfoAsJson($retValue);
     }
 

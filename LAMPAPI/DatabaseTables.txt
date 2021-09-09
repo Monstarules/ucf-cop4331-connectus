@@ -1,0 +1,40 @@
+Database: ConnectUs
+
+Table: Users
++------------------+-------------+------+-----+-------------------+-------------------+
+| Field            | Type        | Null | Key | Default           | Extra             |
++------------------+-------------+------+-----+-------------------+-------------------+
+| UserId           | int         | NO   | PRI | NULL              | auto_increment    |
+| UserName         | varchar(50) | NO   |     |                   |                   |
+| Password         | varchar(50) | NO   |     |                   |                   |
+| FirstName        | varchar(50) | NO   |     |                   |                   |
+| LastName         | varchar(50) | NO   |     |                   |                   |
+| DateCreated      | datetime    | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| DateLastLoggedIn | datetime    | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++------------------+-------------+------+-----+-------------------+-------------------+
+
+
+Table: Contacts
++-----------------+-------------+------+-----+-------------------+-------------------+
+| Field           | Type        | Null | Key | Default           | Extra             |
++-----------------+-------------+------+-----+-------------------+-------------------+
+| UserId          | int         | NO   | PRI | NULL              | auto_increment    |
+| FirstName       | varchar(50) | NO   |     |                   |                   |
+| MiddleName      | varchar(50) | NO   |     |                   |                   |
+| LastName        | varchar(50) | NO   |     |                   |                   |
+| Address         | varchar(50) | NO   |     |                   |                   |
+| PhoneNumber     | varchar(50) | NO   |     |                   |                   |
+| Email           | varchar(50) | NO   |     |                   |                   |
+| Company         | varchar(50) | NO   |     |                   |                   |
+| Birthday        | date        | YES  |     | NULL              |                   |
+| DateCreated     | datetime    | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| DateLastUpdated | datetime    | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++-----------------+-------------+------+-----+-------------------+-------------------+
+
+
+UserId,FirstName,MiddleName,LastName,Address,PhoneNumber,Email,Company,Birthday
+
+7,"Glenn","Eric","Hartwell","Here","5551234567","an@email.com","MyCompany",10/29/1994
+
+ALTER TABLE Contacts
+ADD FOREIGN KEY (UserId) REFERENCES Users(UserId);
