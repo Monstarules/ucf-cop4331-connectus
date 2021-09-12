@@ -4,26 +4,26 @@
 var urlBase = 'http://connect-us.me';
 var extension = 'php';
 
-var userId = 0;
-var firstName = "";
-var lastName = "";
+var UserID = 0;
+var FirstName = "";
+var LastName = "";
 
 function doLogin()
 {
-	userId = 0;
-	firstName = "";
-	lastName = "";
+	UserID = 0;
+	FirstName = "";
+	LastName = "";
 	
     // Change 'loginName' and 'loginPassword' if we necessary, for consistency
-	var UserName = document.getElementById("loginName").value;
-	var Password = document.getElementById("loginPassword").value;
+	var UserName = document.getElementById("UserName").value;
+	var Password = document.getElementById("Password").value;
 	
-	document.getElementById("loginResult").innerHTML = "";
+	document.getElementById("LoginResult").innerHTML = "";
 
-	var tmp = {UserName:lUserNameogin,Password:Password};
+	var tmp = {UserName:UserName,Password:Password};
 	var jsonPayload = JSON.stringify( tmp );
 	
-	var url = urlBase + '/Login.' + extension;
+	var url = urlBase + '/login.' + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -37,21 +37,21 @@ function doLogin()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				var jsonObject = JSON.parse( xhr.responseText );
-				userId = jsonObject.UserId;
+				UserID = jsonObject.UserID;
 		
-				if( userId < 1 )
+				if( UserID < 1 )
 				{		
-					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					document.getElementById("LoginResult").innerHTML = "User/Password combination incorrect";
 					return;
 				}
 		
-				firstName = jsonObject.FirstName;
-				lastName = jsonObject.LastName;
+				FirstName = jsonObject.FirstName;
+				LastName = jsonObject.LastName;
 
 				saveCookie();
 	
                 // DEFINITELY CHANGE THIS!!!!!
-				window.location.href = "addContactPage.html";
+				window.location.href = "ContactPage.html";
 			}
 		};
 		xhr.send(jsonPayload);
@@ -61,7 +61,7 @@ function doLogin()
 	catch(err)
 	{
 		// I assume this is where we would should redirect to a registration page, or just tell the user they dont have an account
-        document.getElementById("loginResult").innerHTML = err.message;
+        document.getElementById("LoginResult").innerHTML = err.message;
 	}
 
 }
@@ -70,23 +70,23 @@ function doLogin()
 // NEW NECESSARY function; anyone can create a new account
 function doSignUp()
 {
-            userId = 0;
-            firstName = "";
-            lastName = "";
+            UserID = 0;
+            FirstName = "";
+            LastName = "";
             
             // Change 'loginName' and 'loginPassword' if we necessary, for consistency
-            var UserID = document.getElementById("loginName").value;
-            var Password = document.getElementById("loginPassword").value;
-            var FirstName = document.getElementById("firstName").value;
-            var LastName = document.getElementById("lastName").value;
+            var UserID = document.getElementById("UserID").value;
+            var Password = document.getElementById("Password").value;
+            var FirstName = document.getElementById("FirstName").value;
+            var LastName = document.getElementById("LastName").value;
             
-            document.getElementById("loginResult").innerHTML = "";
+            document.getElementById("LoginResult").innerHTML = "";
 
-            var tmp = {UserName:Login,Password:Password,FirstName:FirstName,LastName:LastName};
+            var tmp = {UserID:UserID,Password:Password,FirstName:FirstName,LastName:LastName};
             var jsonPayload = JSON.stringify( tmp );
             
-            // change to whatever page we go to sign up, IF we go to a page to sign up
-            var url = urlBase + '/SignUpPage.' + extension;
+            // go to user registration php
+            var url = urlBase + '/register.' + extension;
 
             var xhr = new XMLHttpRequest();
             xhr.open("POST", url, true);
@@ -98,23 +98,24 @@ function doSignUp()
                     if (this.readyState == 4 && this.status == 200) 
                     {
                         var jsonObject = JSON.parse( xhr.responseText );
-                        userId = jsonObject.id;
+                        UserID = jsonObject.id;
                 
                         //this should be checking if the User is trying to create an acct. that already exists
-                        if( userId > 0)
+                        if( UserID > 0 )
                         {
-                            document.getElementById("loginResult").innerHTML = "User already exists";
+                            document.getElementById("LoginResult").innerHTML = "User already exists";
                             return;
                         }
 
 
                 
-                        firstName = jsonObject.firstName;
-                        lastName = jsonObject.lastName;
+                        FirstName = jsonObject.FirstName;
+                        LastName = jsonObject.LastName;
 
                         saveCookie();
             
-                        window.location.href = "color.html";
+						//Once signed up, send them to contact page
+                        window.location.href = "ContactPage.html";
                     }
                 };
                 xhr.send(jsonPayload);
@@ -122,7 +123,7 @@ function doSignUp()
             catch(err)
             {
                 // I assume this is where we would should redirect to a registration page, or just tell the user they dont have an account
-                document.getElementById("loginResult").innerHTML = err.message;
+                document.getElementById("LoginResult").innerHTML = err.message;
             }
 }
 
@@ -131,48 +132,48 @@ function saveCookie()
 	var minutes = 20;
 	var date = new Date();
 	date.setTime(date.getTime()+(minutes*60*1000));	
-	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+	document.cookie = "FirstName=" + FirstName + ",LastName=" + LastName + ",UserID=" + UserID + ";expires=" + date.toGMTString();
 }
 
 function readCookie()
 {
-	userId = -1;
+	UserID = -1;
 	var data = document.cookie;
 	var splits = data.split(",");
 	for(var i = 0; i < splits.length; i++) 
 	{
 		var thisOne = splits[i].trim();
 		var tokens = thisOne.split("=");
-		if( tokens[0] == "firstName" )
+		if( tokens[0] == "FirstName" )
 		{
-			firstName = tokens[1];
+			FirstName = tokens[1];
 		}
-		else if( tokens[0] == "lastName" )
+		else if( tokens[0] == "LastName" )
 		{
-			lastName = tokens[1];
+			LastName = tokens[1];
 		}
-		else if( tokens[0] == "userId" )
+		else if( tokens[0] == "UserID" )
 		{
-			userId = parseInt( tokens[1].trim() );
+			UserID = parseInt( tokens[1].trim() );
 		}
 	}
 	
-	if( userId < 0 )
+	if( UserID < 0 )
 	{
 		window.location.href = "index.html";
 	}
 	else
 	{
-		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+		document.getElementById("UserName").innerHTML = "Logged in as " + FirstName + " " + LastName;
 	}
 }
 
 function doLogout()
 {
-	userId = 0;
-	firstName = "";
-	lastName = "";
-	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+	UserID = 0;
+	FirstName = "";
+	LastName = "";
+	document.cookie = "FirstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 	window.location.href = "index.html";
 }
 
@@ -181,7 +182,7 @@ function doLogout()
     // 	var newColor = document.getElementById("colorText").value;
     // 	document.getElementById("colorAddResult").innerHTML = "";
 
-    // 	var tmp = {color:newColor,userId,userId};
+    // 	var tmp = {color:newColor,UserID,UserID};
     // 	var jsonPayload = JSON.stringify( tmp );
 
     // 	var url = urlBase + '/AddColor.' + extension;
@@ -210,12 +211,12 @@ function doLogout()
 function addContact()
 {
 	// change depending on exact ID in html
-    var newFirstName = document.getElementById("firstNameText").value;
+    var newFirstName = document.getElementById("FirstNameText").value;
     var newLastName = document.getElementById("firstLastText").value;
     //last thing changed
 	document.getElementById("colorAddResult").innerHTML = "";
 
-	var tmp = {color:newColor,userId,userId};
+	var tmp = {color:newColor,UserID,UserID};
 	var jsonPayload = JSON.stringify( tmp );
 
 	var url = urlBase + '/AddColor.' + extension;
@@ -250,7 +251,7 @@ function searchContact()
 	
 	var colorList = "";
 
-	var tmp = {search:srch,userId:userId};
+	var tmp = {search:srch,UserID:UserID};
 	var jsonPayload = JSON.stringify( tmp );
 
 	var url = urlBase + '/SearchColors.' + extension;
