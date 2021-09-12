@@ -211,15 +211,32 @@ function doLogout()
 function addContact()
 {
 	// change depending on exact ID in html
-    var newFirstName = document.getElementById("FirstNameText").value;
-    var newLastName = document.getElementById("firstLastText").value;
-    //last thing changed
-	document.getElementById("colorAddResult").innerHTML = "";
 
-	var tmp = {color:newColor,UserID,UserID};
+	//how do get userID for contacts?
+	//var newUserID
+    var newFirstName = document.getElementById("FirstNameText").value;
+    var newLastName = document.getElementById("LastNameText").value;
+	var newMiddleName = document.getElementById("MiddleNameText").value;
+	var newAddress= document.getElementById("AddressText").value;
+	var newPhoneNumber = document.getElementById("PhoneNumberText").value;
+	var newEmail = document.getElementById("EmailText").value;
+	var newCompany = document.getElementById("CompanyText").value;
+	var newBirthday = document.getElementById("BirthdayText").value;
+    //double check this later
+	document.getElementById("contactAddResult").innerHTML = "";
+
+	var tmp = {	FirstName	:newFirstName,
+				LastName	:newLastName,
+				MiddleName	:newMiddleName,
+				Address		:newAddress,
+				PhoneNumber	:newPhoneNumber,
+				Email		:newEmail,
+				Company		:newCompany,
+				Birthday	:newBirthday};
+
 	var jsonPayload = JSON.stringify( tmp );
 
-	var url = urlBase + '/AddColor.' + extension;
+	var url = urlBase + '/create.' + extension;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
