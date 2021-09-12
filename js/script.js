@@ -264,14 +264,15 @@ function addContact()
 function searchContact()
 {
 	var srch = document.getElementById("searchText").value;
-	document.getElementById("colorSearchResult").innerHTML = "";
+	document.getElementById("contactSearchResult").innerHTML = "";
 	
 	var colorList = "";
 
 	var tmp = {search:srch,UserID:UserID};
 	var jsonPayload = JSON.stringify( tmp );
 
-	var url = urlBase + '/SearchColors.' + extension;
+	// update to appropriate search php file
+	var url = urlBase + '/search.' + extension;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -282,7 +283,7 @@ function searchContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
+				document.getElementById("contactSearchResult").innerHTML = "Color(s) has been retrieved";
 				var jsonObject = JSON.parse( xhr.responseText );
 				
 				for( var i=0; i<jsonObject.results.length; i++ )
@@ -301,7 +302,7 @@ function searchContact()
 	}
 	catch(err)
 	{
-		document.getElementById("colorSearchResult").innerHTML = err.message;
+		document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
 	
 }
