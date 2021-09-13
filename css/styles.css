@@ -17,6 +17,8 @@
 .flexbox-wrapper2 {
     display: flex;
     flex-direction: row;
+    flex-shrink: 0;
+    flex-basis: 90%;
 }
 
 .flexbox-wrapper2 > #two {
@@ -27,26 +29,31 @@
     
     /* Margins */
     margin-left: 50px;
+    margin-right: 50px;
 }
 
 .flexbox-wrapper2 > #three {
     color: DodgerBlue;
     border: 4px;
     align-items: center;
+    align-self: center;
+    flex: auto;
     
     /* Margins */
-    /* margin-right: 100px; */
+    margin-right: 200px;
 }
 
-.flexbox-wrapper2 > #four table {
+.flexbox-wrapper2 > #four {
     color: black;
     border: 1px solid black;
     border-collapse: collapse;
     width: 100%;
     align-items: center;
-    
+    align-self: center;
+    flex: auto;
+
     /* Margins */
-    /* margin-right: 100px; */
+    margin-right: 200px;
 }
 
 .flexbox-wrapper2 > #four th {
@@ -61,6 +68,7 @@
 .flexbox-wrapper2 > #four td {
     border: 1px solid #ddd;
     padding: 8px;
+    align-self: flex-start;
 }
 
 .flexbox-wrapper3 {
@@ -69,7 +77,50 @@
     align-items: center;
 }
 
-.flexbox-wrapper3 > #four {
+.flexbox-wrapper3 > #last {
     color: red;
     text-align: center;
+}
+
+.buttons {
+    background-color: #15317E;
+    border: #ddd;
+    border-radius: 8px;
+    padding: 2px;
+    color: white;
+    opacity: 85%;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.button {
+    background-color: #5784be;
+    border: #ddd;
+    border-radius: 8px;
+    align-self: center;
+    padding: 2px;
+    color: white;
+    padding:unset;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px;
+}
+
+.buttons:hover{
+    background-color: #00d5124f;
+    color: #FFFFFF;
+    opacity: 50%;
+}
+
+#loginDiv
+{
+    font-size: 30px;
+    width: 70%;
+    margin-left: 10%;
+    padding: 25px;
+    background-color: #b2b2b2;
+    text-align: center;
+    align-self: center;
 }
