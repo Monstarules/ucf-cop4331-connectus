@@ -1,1 +1,75 @@
-/* Eventually will be our CSS file. Typically there is one, but we may want multiple. Each HTML file can have one, two, three... etc. */
+.flexbox-wrapper1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.flexbox-wrapper1 > #one {
+    color: #15317E;
+}
+
+.flexbox-wrapper1 > #one > #everyone {
+    color: gray;
+}
+
+/* Stylesheet for the main page */
+.flexbox-wrapper2 {
+    display: flex;
+    flex-direction: row;
+}
+
+.flexbox-wrapper2 > #two {
+    color: green;
+    width: 200px;
+    border: 4px;
+    border-color: black;
+    
+    /* Margins */
+    margin-left: 50px;
+}
+
+.flexbox-wrapper2 > #three {
+    color: DodgerBlue;
+    border: 4px;
+    align-items: center;
+    
+    /* Margins */
+    /* margin-right: 100px; */
+}
+
+.flexbox-wrapper2 > #four table {
+    color: black;
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+    align-items: center;
+    
+    /* Margins */
+    /* margin-right: 100px; */
+}
+
+.flexbox-wrapper2 > #four th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+    padding: 8px; 
+    
+}
+
+.flexbox-wrapper2 > #four td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.flexbox-wrapper3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flexbox-wrapper3 > #four {
+    color: red;
+    text-align: center;
+}
