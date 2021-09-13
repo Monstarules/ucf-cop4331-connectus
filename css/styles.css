@@ -46,8 +46,6 @@
 .flexbox-wrapper2 > #four {
     color: black;
     border: 1px solid black;
-    border-collapse: collapse;
-    width: 100%;
     align-items: center;
     align-self: center;
     flex: auto;
