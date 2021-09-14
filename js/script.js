@@ -213,7 +213,7 @@ function addContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("contactAddResult").innerHTML = "contact has been added";
+				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 			}
 		};
 		xhr.send(jsonPayload);
@@ -229,12 +229,12 @@ function addContact()
 // \/
 function searchContact()
 {
-	var srch = document.getElementById("searchText").value;
+	var search = document.getElementById("searchText").value;
 	document.getElementById("contactSearchResult").innerHTML = "";
 	
 	var contactList = "";
 
-	var tmp = {search:srch,UserID:UserID};
+	var tmp = {search:search,UserID:UserID};
 	var jsonPayload = JSON.stringify( tmp );
 
 	var url = urlBase + '/Searchcontacts.' + extension;
@@ -253,6 +253,7 @@ function searchContact()
 				
 				for( var i=0; i<jsonObject.results.length; i++ )
 				{
+					//watch this carefully, more likely than not it will NOT work well with our html files
 					contactList += jsonObject.results[i];
 					if( i < jsonObject.results.length - 1 )
 					{
