@@ -4,13 +4,13 @@
 var urlBase = 'http://connect-us.me';
 var extension = 'php';
 
-var userId = 0;
+var UserID = 0;
 var FirstName = "";
 var LastName = "";
 
 function doLogin()
 {
-	userId = 0;
+	UserID = 0;
 	FirstName = "";
 	LastName = "";
 	
@@ -37,9 +37,9 @@ function doLogin()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				var jsonObject = JSON.parse( xhr.responseText );
-				userId = jsonObject.UserId;
+				UserID = jsonObject.UserID;
 		
-				if( userId < 1 )
+				if( UserID < 1 )
 				{		
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
@@ -70,7 +70,7 @@ function doLogin()
 // NEW NECESSARY function; anyone can create a new account
 function doSignUp()
 {
-            userId = 0;
+            UserID = 0;
             FirstName = "";
             LastName = "";
             
@@ -98,10 +98,10 @@ function doSignUp()
                     if (this.readyState == 4 && this.status == 200) 
                     {
                         var jsonObject = JSON.parse( xhr.responseText );
-                        userId = jsonObject.id;
+                        UserID = jsonObject.id;
                 
                         //this should be checking if the User is trying to create an acct. that already exists
-                        if( userId > 0)
+                        if( UserID > 0)
                         {
                             document.getElementById("loginResult").innerHTML = "User already exists";
                             return;
@@ -131,12 +131,12 @@ function saveCookie()
 	var minutes = 20;
 	var date = new Date();
 	date.setTime(date.getTime()+(minutes*60*1000));	
-	document.cookie = "FirstName=" + FirstName + ",LastName=" + LastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+	document.cookie = "FirstName=" + FirstName + ",LastName=" + LastName + ",UserID=" + UserID + ";expires=" + date.toGMTString();
 }
 
 function readCookie()
 {
-	userId = -1;
+	UserID = -1;
 	var data = document.cookie;
 	var splits = data.split(",");
 	for(var i = 0; i < splits.length; i++) 
@@ -151,13 +151,13 @@ function readCookie()
 		{
 			LastName = tokens[1];
 		}
-		else if( tokens[0] == "userId" )
+		else if( tokens[0] == "UserID" )
 		{
-			userId = parseInt( tokens[1].trim() );
+			UserID = parseInt( tokens[1].trim() );
 		}
 	}
 	
-	if( userId < 0 )
+	if( UserID < 0 )
 	{
 		window.location.href = "index.html";
 	}
@@ -169,43 +169,13 @@ function readCookie()
 
 function doLogout()
 {
-	userId = 0;
+	UserID = 0;
 	FirstName = "";
 	LastName = "";
 	document.cookie = "FirstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 	window.location.href = "index.html";
 }
 
-// function addcontact()
-// {
-    // 	var newcontact = document.getElementById("contactText").value;
-    // 	document.getElementById("contactAddResult").innerHTML = "";
-
-    // 	var tmp = {contact:newcontact,userId,userId};
-    // 	var jsonPayload = JSON.stringify( tmp );
-
-    // 	var url = urlBase + '/Addcontact.' + extension;
-        
-    // 	var xhr = new XMLHttpRequest();
-    // 	xhr.open("POST", url, true);
-    // 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-    // 	try
-    // 	{
-    // 		xhr.onreadystatechange = function() 
-    // 		{
-    // 			if (this.readyState == 4 && this.status == 200) 
-    // 			{
-    // 				document.getElementById("contactAddResult").innerHTML = "contact has been added";
-    // 			}
-    // 		};
-    // 		xhr.send(jsonPayload);
-    // 	}
-    // 	catch(err)
-    // 	{
-    // 		document.getElementById("contactAddResult").innerHTML = err.message;
-    // 	}
-	
-// }
 
 function addContact()
 {
@@ -264,7 +234,7 @@ function searchContact()
 	
 	var contactList = "";
 
-	var tmp = {search:srch,userId:userId};
+	var tmp = {search:srch,UserID:UserID};
 	var jsonPayload = JSON.stringify( tmp );
 
 	var url = urlBase + '/Searchcontacts.' + extension;
