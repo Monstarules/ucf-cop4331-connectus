@@ -5,25 +5,25 @@ var urlBase = 'http://connect-us.me';
 var extension = 'php';
 
 var userId = 0;
-var firstName = "";
-var lastName = "";
+var FirstName = "";
+var LastName = "";
 
 function doLogin()
 {
 	userId = 0;
-	firstName = "";
-	lastName = "";
+	FirstName = "";
+	LastName = "";
 	
-    // Change 'loginName' and 'loginPassword' if we necessary, for consistency
+    // Change 'loginName' and 'loginPassword' if necessary, for consistency
 	var UserName = document.getElementById("loginName").value;
 	var Password = document.getElementById("loginPassword").value;
 	
 	document.getElementById("loginResult").innerHTML = "";
 
-	var tmp = {UserName:lUserNameogin,Password:Password};
+	var tmp = {UserName:UserName,Password:Password};
 	var jsonPayload = JSON.stringify( tmp );
 	
-	var url = urlBase + '/Login.' + extension;
+	var url = urlBase + '/login.' + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -45,8 +45,8 @@ function doLogin()
 					return;
 				}
 		
-				firstName = jsonObject.FirstName;
-				lastName = jsonObject.LastName;
+				FirstName = jsonObject.FirstName;
+				LastName = jsonObject.LastName;
 
 				saveCookie();
 	
@@ -71,21 +71,21 @@ function doLogin()
 function doSignUp()
 {
             userId = 0;
-            firstName = "";
-            lastName = "";
+            FirstName = "";
+            LastName = "";
             
             // Change 'loginName' and 'loginPassword' if we necessary, for consistency
-            var UserID = document.getElementById("loginName").value;
+            var UserName = document.getElementById("loginName").value;
             var Password = document.getElementById("loginPassword").value;
-            var FirstName = document.getElementById("firstName").value;
-            var LastName = document.getElementById("lastName").value;
+            var FirstName = document.getElementById("FirstName").value;
+            var LastName = document.getElementById("LastName").value;
             
             document.getElementById("loginResult").innerHTML = "";
 
-            var tmp = {UserName:Login,Password:Password,FirstName:FirstName,LastName:LastName};
+            var tmp = {UserName:UserName,Password:Password,FirstName:FirstName,LastName:LastName};
             var jsonPayload = JSON.stringify( tmp );
             
-            // change to whatever page we go to sign up, IF we go to a page to sign up
+            // change to whatever php we go to sign up, IF we go to a page to sign up
             var url = urlBase + '/SignUpPage.' + extension;
 
             var xhr = new XMLHttpRequest();
@@ -109,12 +109,12 @@ function doSignUp()
 
 
                 
-                        firstName = jsonObject.firstName;
-                        lastName = jsonObject.lastName;
+                        FirstName = jsonObject.FirstName;
+                        LastName = jsonObject.LastName;
 
                         saveCookie();
             
-                        window.location.href = "color.html";
+                        window.location.href = "contact.html";
                     }
                 };
                 xhr.send(jsonPayload);
@@ -131,7 +131,7 @@ function saveCookie()
 	var minutes = 20;
 	var date = new Date();
 	date.setTime(date.getTime()+(minutes*60*1000));	
-	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+	document.cookie = "FirstName=" + FirstName + ",LastName=" + LastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 }
 
 function readCookie()
@@ -143,13 +143,13 @@ function readCookie()
 	{
 		var thisOne = splits[i].trim();
 		var tokens = thisOne.split("=");
-		if( tokens[0] == "firstName" )
+		if( tokens[0] == "FirstName" )
 		{
-			firstName = tokens[1];
+			FirstName = tokens[1];
 		}
-		else if( tokens[0] == "lastName" )
+		else if( tokens[0] == "LastName" )
 		{
-			lastName = tokens[1];
+			LastName = tokens[1];
 		}
 		else if( tokens[0] == "userId" )
 		{
@@ -163,28 +163,28 @@ function readCookie()
 	}
 	else
 	{
-		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+		document.getElementById("userName").innerHTML = "Logged in as " + FirstName + " " + LastName;
 	}
 }
 
 function doLogout()
 {
 	userId = 0;
-	firstName = "";
-	lastName = "";
-	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+	FirstName = "";
+	LastName = "";
+	document.cookie = "FirstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 	window.location.href = "index.html";
 }
 
-// function addColor()
+// function addcontact()
 // {
-    // 	var newColor = document.getElementById("colorText").value;
-    // 	document.getElementById("colorAddResult").innerHTML = "";
+    // 	var newcontact = document.getElementById("contactText").value;
+    // 	document.getElementById("contactAddResult").innerHTML = "";
 
-    // 	var tmp = {color:newColor,userId,userId};
+    // 	var tmp = {contact:newcontact,userId,userId};
     // 	var jsonPayload = JSON.stringify( tmp );
 
-    // 	var url = urlBase + '/AddColor.' + extension;
+    // 	var url = urlBase + '/Addcontact.' + extension;
         
     // 	var xhr = new XMLHttpRequest();
     // 	xhr.open("POST", url, true);
@@ -195,14 +195,14 @@ function doLogout()
     // 		{
     // 			if (this.readyState == 4 && this.status == 200) 
     // 			{
-    // 				document.getElementById("colorAddResult").innerHTML = "Color has been added";
+    // 				document.getElementById("contactAddResult").innerHTML = "contact has been added";
     // 			}
     // 		};
     // 		xhr.send(jsonPayload);
     // 	}
     // 	catch(err)
     // 	{
-    // 		document.getElementById("colorAddResult").innerHTML = err.message;
+    // 		document.getElementById("contactAddResult").innerHTML = err.message;
     // 	}
 	
 // }
@@ -210,15 +210,29 @@ function doLogout()
 function addContact()
 {
 	// change depending on exact ID in html
-    var newFirstName = document.getElementById("firstNameText").value;
-    var newLastName = document.getElementById("firstLastText").value;
+    var newFirstName = document.getElementById("FirstNameText").value;
+    var newLastName = document.getElementById("LastNameText").value;
+	var newMiddleName = document.getElementById("MiddleName").value;
+	var newPhoneNumber = document.getElementById("PhoneNumber").value;
+	var newEmail = document.getElementById("Email").value;
+	var newCompany = document.getElementById("Company").value;
+	var newBirthday = document.getElementById("Birthday").value;
+	var newAddress = document.getElementById("Address").value;
+	
     //last thing changed
-	document.getElementById("colorAddResult").innerHTML = "";
+	document.getElementById("contactAddResult").innerHTML = "";
 
-	var tmp = {color:newColor,userId,userId};
+	var tmp = {	FirstName	:newFirstName,
+				LastName	:newLastName,
+				MiddleName	:newMiddleName,
+				PhoneNumber	:newPhoneNumber,
+				Email		:newEmail,
+				Company		:newCompany,
+				Birthday	:newBirthday,
+				Address		:newAddress};
 	var jsonPayload = JSON.stringify( tmp );
 
-	var url = urlBase + '/AddColor.' + extension;
+	var url = urlBase + '/AddContact.' + extension;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -229,14 +243,14 @@ function addContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("colorAddResult").innerHTML = "Color has been added";
+				document.getElementById("contactAddResult").innerHTML = "contact has been added";
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("colorAddResult").innerHTML = err.message;
+		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
 	
 }
@@ -246,14 +260,14 @@ function addContact()
 function searchContact()
 {
 	var srch = document.getElementById("searchText").value;
-	document.getElementById("colorSearchResult").innerHTML = "";
+	document.getElementById("contactSearchResult").innerHTML = "";
 	
-	var colorList = "";
+	var contactList = "";
 
 	var tmp = {search:srch,userId:userId};
 	var jsonPayload = JSON.stringify( tmp );
 
-	var url = urlBase + '/SearchColors.' + extension;
+	var url = urlBase + '/Searchcontacts.' + extension;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -264,26 +278,26 @@ function searchContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
+				document.getElementById("contactSearchResult").innerHTML = "contact(s) has been retrieved";
 				var jsonObject = JSON.parse( xhr.responseText );
 				
 				for( var i=0; i<jsonObject.results.length; i++ )
 				{
-					colorList += jsonObject.results[i];
+					contactList += jsonObject.results[i];
 					if( i < jsonObject.results.length - 1 )
 					{
-						colorList += "<br />\r\n";
+						contactList += "<br />\r\n";
 					}
 				}
 				
-				document.getElementsByTagName("p")[0].innerHTML = colorList;
+				document.getElementsByTagName("p")[0].innerHTML = contactList;
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("colorSearchResult").innerHTML = err.message;
+		document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
 	
 }
