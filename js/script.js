@@ -7,6 +7,7 @@ var extension = 'php';
 var UserID = 0;
 var FirstName = "";
 var LastName = "";
+//updated?
 
 function doLogin()
 {
@@ -14,9 +15,9 @@ function doLogin()
 	FirstName = "";
 	LastName = "";
 	
-    // Change 'loginName' and 'loginPassword' if we necessary, for consistency
-	var UserName = document.getElementById("UserName").value;
-	var Password = document.getElementById("Password").value;
+    // Change 'loginName' and 'loginPassword' if necessary, for consistency
+	var UserName = document.getElementById("loginName").value;
+	var Password = document.getElementById("loginPassword").value;
 	
 	document.getElementById("LoginResult").innerHTML = "";
 
@@ -75,18 +76,18 @@ function doSignUp()
             LastName = "";
             
             // Change 'loginName' and 'loginPassword' if we necessary, for consistency
-            var UserID = document.getElementById("UserID").value;
-            var Password = document.getElementById("Password").value;
+            var UserName = document.getElementById("loginName").value;
+            var Password = document.getElementById("loginPassword").value;
             var FirstName = document.getElementById("FirstName").value;
             var LastName = document.getElementById("LastName").value;
             
             document.getElementById("LoginResult").innerHTML = "";
 
-            var tmp = {UserID:UserID,Password:Password,FirstName:FirstName,LastName:LastName};
+            var tmp = {UserName:UserName,Password:Password,FirstName:FirstName,LastName:LastName};
             var jsonPayload = JSON.stringify( tmp );
             
-            // go to user registration php
-            var url = urlBase + '/register.' + extension;
+            // change to whatever php we go to sign up, IF we go to a page to sign up
+            var url = urlBase + '/SignUpPage.' + extension;
 
             var xhr = new XMLHttpRequest();
             xhr.open("POST", url, true);
@@ -114,8 +115,7 @@ function doSignUp()
 
                         saveCookie();
             
-						//Once signed up, send them to contact page
-                        window.location.href = "ContactPage.html";
+                        window.location.href = "contact.html";
                     }
                 };
                 xhr.send(jsonPayload);
@@ -177,36 +177,6 @@ function doLogout()
 	window.location.href = "index.html";
 }
 
-// function addColor()
-// {
-    // 	var newColor = document.getElementById("colorText").value;
-    // 	document.getElementById("colorAddResult").innerHTML = "";
-
-    // 	var tmp = {color:newColor,UserID,UserID};
-    // 	var jsonPayload = JSON.stringify( tmp );
-
-    // 	var url = urlBase + '/AddColor.' + extension;
-        
-    // 	var xhr = new XMLHttpRequest();
-    // 	xhr.open("POST", url, true);
-    // 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-    // 	try
-    // 	{
-    // 		xhr.onreadystatechange = function() 
-    // 		{
-    // 			if (this.readyState == 4 && this.status == 200) 
-    // 			{
-    // 				document.getElementById("colorAddResult").innerHTML = "Color has been added";
-    // 			}
-    // 		};
-    // 		xhr.send(jsonPayload);
-    // 	}
-    // 	catch(err)
-    // 	{
-    // 		document.getElementById("colorAddResult").innerHTML = err.message;
-    // 	}
-	
-// }
 
 function addContact()
 {
@@ -247,14 +217,14 @@ function addContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("colorAddResult").innerHTML = "Color has been added";
+				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("colorAddResult").innerHTML = err.message;
+		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
 	
 }
@@ -263,16 +233,15 @@ function addContact()
 // \/
 function searchContact()
 {
-	var srch = document.getElementById("searchText").value;
+	var search = document.getElementById("searchText").value;
 	document.getElementById("contactSearchResult").innerHTML = "";
 	
-	var colorList = "";
+	var contactList = "";
 
-	var tmp = {search:srch,UserID:UserID};
+	var tmp = {search:search,UserID:UserID};
 	var jsonPayload = JSON.stringify( tmp );
 
-	// update to appropriate search php file
-	var url = urlBase + '/search.' + extension;
+	var url = urlBase + '/Searchcontacts.' + extension;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -283,19 +252,20 @@ function searchContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("contactSearchResult").innerHTML = "Color(s) has been retrieved";
+				document.getElementById("contactSearchResult").innerHTML = "contact(s) has been retrieved";
 				var jsonObject = JSON.parse( xhr.responseText );
 				
 				for( var i=0; i<jsonObject.results.length; i++ )
 				{
-					colorList += jsonObject.results[i];
+					//watch this carefully, more likely than not it will NOT work well with our html files
+					contactList += jsonObject.results[i];
 					if( i < jsonObject.results.length - 1 )
 					{
-						colorList += "<br />\r\n";
+						contactList += "<br />\r\n";
 					}
 				}
 				
-				document.getElementsByTagName("p")[0].innerHTML = colorList;
+				document.getElementsByTagName("p")[0].innerHTML = contactList;
 			}
 		};
 		xhr.send(jsonPayload);
