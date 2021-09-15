@@ -21,10 +21,6 @@
                                 Company = ?,
                                 Birthday = ?
                                 WHERE ContactId = ?");
-        if ($stmt == false)
-        {
-            returnWithError("Could not update contact.");
-        }
 
         $stmt->bind_param("ssssssssi",
                            $updateData["FirstName"],
