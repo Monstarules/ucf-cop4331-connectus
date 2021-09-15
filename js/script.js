@@ -15,7 +15,7 @@ function doLogin()
 	UserId = 0;
 	FirstName = "";
 	LastName = "";
-	
+	 
     // Change 'loginName' and 'loginPassword' if necessary, for consistency
 	var UserName = document.getElementById("loginName").value;
 	var Password = document.getElementById("loginPassword").value;
