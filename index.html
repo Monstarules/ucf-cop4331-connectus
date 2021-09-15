@@ -1,14 +1,47 @@
+<!-- This is the main index page of the project. Here, is what a person sees when first accessing the website. -->
 <!DOCTYPE html>
+
 <html>
+
 <head>
 	<title>ConnectUs - Connecting Everyone</title>
+	<!-- Extern. stylesheet -->
+	<link rel="stylesheet" href="css\styles.css">
+	</link>
 </head>
+
 <body>
-	<h1>There's not much here right now...</h1>
-	<h3>...but that will change!</h3>
-	
-	<p>K, mainly what the FrontEnd is about is making a good and friendly UI. It should be clean, easy on the eyes, and we should have a consistent color scheme. Keep in mind, the "index" page is typically what the user is going to be seeing when they first access the webpage properly.</p>
-	<p style="color:red"><b>In this case, they should not be seeing this page immediately.</b></p>
-	<p>Why? Because the index should be locked behind our login page. Either that, or we can make another index page <span style="color:blue">(remember, we want to let the user be able to make themselves an account!)</span><br>You may notice by looking at the source code of the page, there are a few different HTML code bits I have done. You may want to look at it for future reference!</p>
+	<!-- Let's use flexboxes. -->
+	<div class="flexbox-wrapper1">
+		<div id="one">
+			<h1>ConnectUs</h1>
+			<span id="everyone">
+				<h2>Connecting you to everyone</h2>
+			</span>
+		</div>
+	</div>
+	<div class="flexbox-wrapper2">
+		<div id="two">
+			<span id="navline">Navigation</span>
+			<list>
+				<ul><a href="account overview/index.html" class="buttons">Account Overview</a></ul>
+				<ul><a href="contacts/index.html" class="buttons">Contacts</a></ul>
+				<ul><b class="button">Main Page</b></ul>
+				<ul><a href="login.html" class="buttons">Login</a></ul>
+				<ul><a href="create account/index.html" class="buttons">Create Account</a></ul>
+				<ul><a href="about us/index.html" class="buttons">About Us</a></ul>
+			</list>
+		</div>
+		<div id="three">Main</div>
+	</div>
+	<div class="flexbox-wrapper3">
+		<div id="four">
+			<h1>Footer</1>
+		</div>
+	</div>
 </body>
+
 </html>
+
+<script>
+</script>
