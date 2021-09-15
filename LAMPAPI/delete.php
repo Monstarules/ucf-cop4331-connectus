@@ -14,7 +14,7 @@
                                 USING Contacts 
                                 INNER JOIN Users 
                                 ON Contacts.UserId = Users.UserId
-                                WHERE ContactId=?;");
+                                WHERE ContactId=?");
 
         $stmt->bind_param("i", $deleteInfo["ContactId"]);
         $stmt->execute();
