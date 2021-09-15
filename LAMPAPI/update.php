@@ -12,7 +12,6 @@
     {
         $stmt = $conn->prepare("UPDATE Contacts
                                 SET
-                                UserId = ?,
                                 FirstName = ?,
                                 MiddleName = ?,
                                 LastName = ?,
@@ -20,9 +19,14 @@
                                 PhoneNumber = ?,
                                 Email = ?,
                                 Company = ?,
-                                Birthday = ?");
-        $stmt->bind_param("issssssss",
-                           $updateData["UserId"],
+                                Birthday = ?
+                                WHERE ContactId = ?");
+        if ($stmt == false)
+        {
+            returnWithError("Could not update contact.");
+        }
+
+        $stmt->bind_param("ssssssssi",
                            $updateData["FirstName"],
                            $updateData["MiddleName"],
                            $updateData["LastName"],
@@ -30,11 +34,12 @@
                            $updateData["PhoneNumber"],
                            $updateData["Email"],
                            $updateData["Company"],
-                           $updateData["Birthday"]); 
+                           $updateData["Birthday"],
+                           $updateData["ContactId"]); 
         $stmt->execute();
+        returnWithError("");      
         $stmt->close();
         $conn->close();
-        returnWithError("");      
     }
 
     function getRequestInfo()
