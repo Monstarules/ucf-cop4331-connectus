@@ -52,7 +52,7 @@ function doLogin()
 				saveCookie();
 	
                 // DEFINITELY CHANGE THIS!!!!!
-				window.location.href = "ContactPage.html";
+				window.location.href = "contacts/index.html";
 			}
 		};
 		xhr.send(jsonPayload);
