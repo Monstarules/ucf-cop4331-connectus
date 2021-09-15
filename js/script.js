@@ -19,7 +19,7 @@ function doLogin()
 	var UserName = document.getElementById("loginName").value;
 	var Password = document.getElementById("loginPassword").value;
 	
-	document.getElementById("LoginResult").innerHTML = "";
+	document.getElementById("loginResult").innerHTML = "";
 
 	var tmp = {UserName:UserName,Password:Password};
 	var jsonPayload = JSON.stringify( tmp );
@@ -42,7 +42,7 @@ function doLogin()
 		
 				if( UserID < 1 )
 				{		
-					document.getElementById("LoginResult").innerHTML = "User/Password combination incorrect";
+					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
 				}
 		
@@ -56,13 +56,11 @@ function doLogin()
 			}
 		};
 		xhr.send(jsonPayload);
-        //why is xhr.send(jsonPayload) at the end of the try? isn't jsonPayLoad holding what the user entered to login? NVM-- if theres
-        // an error, it'll go to catch(err)
 	}
 	catch(err)
 	{
-		// I assume this is where we would should redirect to a registration page, or just tell the user they dont have an account
-        document.getElementById("LoginResult").innerHTML = err.message;
+		// Display error message in case of login failure.
+        document.getElementById("loginResult").innerHTML = err.message;
 	}
 
 }
@@ -81,13 +79,13 @@ function doSignUp()
             var FirstName = document.getElementById("FirstName").value;
             var LastName = document.getElementById("LastName").value;
             
-            document.getElementById("LoginResult").innerHTML = "";
+            document.getElementById("loginResult").innerHTML = "";
 
             var tmp = {UserName:UserName,Password:Password,FirstName:FirstName,LastName:LastName};
             var jsonPayload = JSON.stringify( tmp );
             
-            // change to whatever php we go to sign up, IF we go to a page to sign up
-            var url = urlBase + '/SignUpPage.' + extension;
+            // take them to register.php
+            var url = urlBase + '/register.' + extension;
 
             var xhr = new XMLHttpRequest();
             xhr.open("POST", url, true);
@@ -104,7 +102,7 @@ function doSignUp()
                         //this should be checking if the User is trying to create an acct. that already exists
                         if( UserID > 0 )
                         {
-                            document.getElementById("LoginResult").innerHTML = "User already exists";
+                            document.getElementById("loginResult").innerHTML = "User already exists";
                             return;
                         }
 
@@ -123,7 +121,7 @@ function doSignUp()
             catch(err)
             {
                 // I assume this is where we would should redirect to a registration page, or just tell the user they dont have an account
-                document.getElementById("LoginResult").innerHTML = err.message;
+                document.getElementById("loginResult").innerHTML = err.message;
             }
 }
 
@@ -192,6 +190,7 @@ function addContact()
 	var newEmail = document.getElementById("EmailText").value;
 	var newCompany = document.getElementById("CompanyText").value;
 	var newBirthday = document.getElementById("BirthdayText").value;
+
     //double check this later
 	document.getElementById("contactAddResult").innerHTML = "";
 
@@ -229,6 +228,11 @@ function addContact()
 	
 }
 
+function doDeleteContact)()
+{
+	UserID = document.getElementById("UserID").value;
+}
+
 
 // \/
 function searchContact()
@@ -241,7 +245,7 @@ function searchContact()
 	var tmp = {search:search,UserID:UserID};
 	var jsonPayload = JSON.stringify( tmp );
 
-	var url = urlBase + '/Searchcontacts.' + extension;
+	var url = urlBase + '/SearchContacts.' + extension;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
