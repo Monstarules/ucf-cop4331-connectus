@@ -1,4 +1,4 @@
-<!-- This is the main index page of the project. Here, is what a person sees when first accessing the website. -->
+<!-- Page where new users can create an account to have full access to our services. Be prepared to provide some information. -->
 <!DOCTYPE html>
 
 <html>
@@ -32,11 +32,26 @@
                 <ul><a href="../about us/index.html" class="buttons">About Us</a></ul>
             </list>
         </div>
-        <div id="three">Main</div>
+        <div id="three">
+            <div id="loginDiv">
+                <span id="inner-title">Create Account</br>
+                    <input type="name" id="FirstName" placeholder="First Name" /><br />
+                    <input type="name" id="LastName" placeholder="Last Name" /><br />
+                    <input type="text" id="loginName" placeholder="Username" /><br />
+                    <input type="password" id="loginPassword" placeholder="Password" /><br />
+                    <button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Do It </button>
+                    <span id="loginResult"></span>
+            </div>
+        </div>
     </div>
     <div class="flexbox-wrapper3">
         <div id="four">
-            <h1>Footer</1>
+            <h1 style="font-size: x-large;">COP 4331C Fall 2021 Small Project </h1>
+            <h2 style="font-size: large;">ConnectUs</h2>
+            <p>This page is an open source project intended only for demnonstration and not for official use or distribution.
+            <br><strong>Developers:</strong> Orion Schyberg, Rafael Vega, Eric Hartwell, Brandon Rubio, Kevin Abreu</br>
+            <strong>Github:</strong> https://github.com/Monstarules/ucf-cop4331-connectus/
+            </p>        
         </div>
     </div>
 </body>
