@@ -44,12 +44,12 @@
 
     // Sets return info with an error and calls sendResultInfoAsJson()
     function returnWithError($err) {
-        $retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+        $retValue = '{"UserId":0,"FirstName":"","LastName":"","error":"' . $err . '"}';
         sendResultInfoAsJson($retValue);
     }
 
     // Sets return info and calls sendResultInfoAsJson()
     function returnWithInfo($firstName, $lastName, $id) {
-        $retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+        $retValue = '{"UserId":' . $id . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '","error":""}';
         sendResultInfoAsJson($retValue);
     }
