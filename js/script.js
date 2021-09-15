@@ -24,7 +24,7 @@ function doLogin()
 	var tmp = {UserName:UserName,Password:Password};
 	var jsonPayload = JSON.stringify( tmp );
 	
-	var url = urlBase + '/login.' + extension;
+	var url = urlBase + '/LAMPAPI/login.' + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -228,10 +228,10 @@ function addContact()
 	
 }
 
-function doDeleteContact)()
+/*function doDeleteContact)()
 {
 	UserID = document.getElementById("UserID").value;
-}
+}*/
 
 
 // \/
