@@ -18,7 +18,8 @@ Table: Contacts
 +-----------------+-------------+------+-----+-------------------+-------------------+
 | Field           | Type        | Null | Key | Default           | Extra             |
 +-----------------+-------------+------+-----+-------------------+-------------------+
-| UserId          | int         | NO   | PRI | NULL              | auto_increment    |
+| ContactId       | int         | NO   | PRI | NULL              | auto_increment    |
+| UserId          | int         | NO   | MUL | NULL              |                   |
 | FirstName       | varchar(50) | NO   |     |                   |                   |
 | MiddleName      | varchar(50) | NO   |     |                   |                   |
 | LastName        | varchar(50) | NO   |     |                   |                   |
