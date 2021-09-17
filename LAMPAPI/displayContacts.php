@@ -1,6 +1,6 @@
 <?php
 
-    $readData = getRequestInfo();
+    $displayData = getRequestInfo();
 
     $conn = new mysqli("localhost", "ConnectUs", "COP4331connectus", "ConnectUs");
 
@@ -10,8 +10,8 @@
     }
     else
     {
-        $stmt = $conn->prepare("SELECT * FROM Contacts WHERE UserId=?");
-        $stmt->bind_param("s", $readData["UserId"]);
+        $stmt = $conn->prepare("SELECT FirstName,LastName FROM Contacts WHERE UserId=?");
+        $stmt->bind_param("s", $displayData["UserId"]);
         $stmt->execute();
         
         $result = $stmt->get_result();
