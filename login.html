@@ -5,6 +5,8 @@
 <html>
 
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <title>ConnectUs - Connecting Everyone</title>
     <!-- Extern. stylesheet -->
     <link rel="stylesheet" href="css\styles.css">
@@ -23,15 +25,19 @@
     </div>
     <div class="flexbox-wrapper2">
         <div id="two">
-            <span id="navline">Navigation</span>
-            <list>
-                <ul><a href="account overview/index.html" class="buttons">Account Overview</a></ul>
-				<ul><a href="contacts/index.html" class="buttons">Contacts</a></ul>
-				<ul><a href="index.html" class="buttons">Main Page</a></ul>
-				<ul><b class="button">Login</b></ul>
-				<ul><a href="create account/index.html" class="buttons">Create Account</a></ul>
-				<ul><a href="about us/index.html" class="buttons">About Us</a></ul>
-            </list>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Navigation
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul><a href="account overview/account.html" class="dropdown-item">Account Overview</a></ul>
+                    <ul><a href="contacts/contacts.html" class="dropdown-item">Contacts</a></ul>
+                    <ul><a href="index.html" class="dropdown-item">Main Page</a></ul>
+                    <ul><b class="dropdown-item">Login</b></ul>
+                    <ul><a href="create account/create.html" class="dropdown-item">Create Account</a></ul>
+                    <ul><a href="about us/about.html" class="dropdown-item">About Us</a></ul>
+                </div>
         </div>
         <div id="three">
             <div id="loginDiv">
@@ -53,6 +59,9 @@
             </p>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
