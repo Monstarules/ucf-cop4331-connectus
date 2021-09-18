@@ -33,12 +33,12 @@
 }
 
 .flexbox-wrapper2 > #three {
-    color: DodgerBlue;
     border: 4px;
     align-items: center;
     align-self: center;
     flex: auto;
-    
+    flex-direction: row;
+
     /* Margins */
     margin-right: 200px;
 }
@@ -112,13 +112,38 @@
     opacity: 50%;
 }
 
-#loginDiv
-{
-    font-size: 30px;
+#loginDiv {
+    font-size: 25px;
     width: 70%;
     margin-left: 10%;
     padding: 25px;
     background-color: #b2b2b2;
     text-align: center;
     align-self: center;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 350px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
 }

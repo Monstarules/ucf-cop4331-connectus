@@ -1,10 +1,12 @@
 <!-- This is the login index page of the project. Here, is what a person sees when they want to log into their accounts. -->
-<!-- This is the main index page of the project. Here, is what a person sees when first accessing the website. -->
+
 <!DOCTYPE html>
 
 <html>
 
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <title>ConnectUs - Connecting Everyone</title>
     <!-- Extern. stylesheet -->
     <link rel="stylesheet" href="css\styles.css">
@@ -23,21 +25,25 @@
     </div>
     <div class="flexbox-wrapper2">
         <div id="two">
-            <span id="navline">Navigation</span>
-            <list>
-                <ul><a href="account overview/index.html" class="buttons">Account Overview</a></ul>
-				<ul><a href="contacts/index.html" class="buttons">Contacts</a></ul>
-				<ul><a href="index.html" class="buttons">Main Page</a></ul>
-				<ul><b class="button">Login</b></ul>
-				<ul><a href="create account/index.html" class="buttons">Create Account</a></ul>
-				<ul><a href="about us/index.html" class="buttons">About Us</a></ul>
-            </list>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Navigation
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul><a href="account overview/account.html" class="dropdown-item">Account Overview</a></ul>
+                    <ul><a href="contacts/contacts.html" class="dropdown-item">Contacts</a></ul>
+                    <ul><a href="index.html" class="dropdown-item">Main Page</a></ul>
+                    <ul><b class="dropdown-item">Login</b></ul>
+                    <ul><a href="create account/create.html" class="dropdown-item">Create Account</a></ul>
+                    <ul><a href="about us/about.html" class="dropdown-item">About Us</a></ul>
+                </div>
         </div>
         <div id="three">
             <div id="loginDiv">
                 <span id="inner-title">PLEASE LOG IN</br>
-                <input type="text" id="loginName" placeholder="Username" /><br />
-                <input type="password" id="loginPassword" placeholder="Password" /><br />
+                <input type="text" id="loginName" placeholder="Username" style="width: auto; align-self: center;"/><br />
+                <input type="password" id="loginPassword" placeholder="Password"  style="width: auto; align-self: center;" /><br />
                 <button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Do It </button>
                 <span id="loginResult"></span>
             </div>
@@ -45,9 +51,17 @@
     </div>
     <div class="flexbox-wrapper3" >
         <div id="four">
-            <h1>Footer</1>
+            <h1 style="font-size: x-large;">COP 4331C Fall 2021 Small Project </h1>
+            <h2 style="font-size: large;">ConnectUs</h2>
+            <p>This page is an open source project intended only for demnonstration and not for official use or distribution.
+            <br><strong>Developers:</strong> Orion Schyberg, Rafael Vega, Eric Hartwell, Brandon Rubio, Kevin Abreu</br>
+            <strong>Github:</strong> https://github.com/Monstarules/ucf-cop4331-connectus/
+            </p>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
