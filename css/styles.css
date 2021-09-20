@@ -40,7 +40,7 @@
     flex-direction: row;
 
     /* Margins */
-    margin-right: 200px;
+    /* margin-right: 200px; */
 }
 
 .flexbox-wrapper2 > #four {
@@ -115,11 +115,12 @@
 #loginDiv {
     font-size: 25px;
     width: 70%;
-    margin-left: 10%;
+    margin-left: 15%;
     padding: 25px;
     background-color: #b2b2b2;
     text-align: center;
     align-self: center;
+    align-content: center;
 }
 
 .card {
