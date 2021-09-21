@@ -43,9 +43,17 @@
         <div id="three">
             <div id="loginDiv">
                 <span id="inner-title">PLEASE LOG IN</br>
-                <input type="text" id="loginName" placeholder="Username" style="width: auto; align-self: center;"/><br />
-                <input type="password" id="loginPassword" placeholder="Password"  style="width: auto; align-self: center;" /><br />
-                <button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Do It </button>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-default" style="width: 50%; align-self: center;">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-default" style="width: 50%; align-self: center;">
+                </div>
+                <button id="loginButton" style="width: 100px;" onclick="doLogin();"> Do It </button>
                 <span id="loginResult"></span>
             </div>
         </div>
