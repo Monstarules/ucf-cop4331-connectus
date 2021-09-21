@@ -1,4 +1,4 @@
-// The small humble beginnings?
+]// The small humble beginnings?
 // Eventually, the JS code will go here.
 
 var urlBase = 'http://connect-us.me/LAMPAPI';
@@ -112,7 +112,7 @@ function doSignUp()
 
                         saveCookie();
             
-                        window.location.href = "contact.html";
+                        window.location.href = "../contacts/contacts.html";
                     }
                 };
                 xhr.send(jsonPayload);
@@ -180,7 +180,6 @@ function addContact()
 	// change depending on exact ID in html
 
 	//how do get UserId for contacts?
-	//var newUserId
     var newFirstName = document.getElementById("FirstNameText").value;
     var newLastName = document.getElementById("LastNameText").value;
 	var newMiddleName = document.getElementById("MiddleNameText").value;
@@ -193,18 +192,18 @@ function addContact()
     //double check this later
 	document.getElementById("contactAddResult").innerHTML = "";
 
-	var tmp = {	FirstName	:newFirstName,
-				LastName	:newLastName,
-				MiddleName	:newMiddleName,
-				Address		:newAddress,
-				PhoneNumber	:newPhoneNumber,
-				Email		:newEmail,
-				Company		:newCompany,
-				Birthday	:newBirthday};
+	var tmp = {	FirstName:newFirstName,
+				LastName:newLastName,
+				MiddleName:newMiddleName,
+				Address:newAddress,
+				PhoneNumber:newPhoneNumber,
+				Email:newEmail,
+				Company:newCompany,
+				Birthday:newBirthday};
 
 	var jsonPayload = JSON.stringify( tmp );
 
-	var url = urlBase + '/create.' + extension;
+	var url = urlBase + '/LAMPAPI/createContact.' + extension;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -227,14 +226,40 @@ function addContact()
 	
 }
 
-/*function doDeleteContact)()
+function doDeleteContact()
 {
-	UserId = document.getElementById("UserId").value;
-}*/
+	// This way, we can tell the API exactly which contact to delete.
+	var ContactId = document.getElementById("ContactId").value;
+
+	var tmp = {ContactId:ContactId};
+
+	var jsonPayload = JSON.stringify( tmp );
+
+	var url = urlBase + '/LAMPAPI/deleteContact.' + extension;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				document.getElementById("contactAddResult").innerHTML = "Contact has been deleted";
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("contactAddResult").innerHTML = err.message;
+	}
+}
 
 
-// \/
-function searchContact()
+// update this O_O
+function doSearchContacts()
 {
 	var search = document.getElementById("searchText").value;
 	document.getElementById("contactSearchResult").innerHTML = "";
@@ -244,7 +269,7 @@ function searchContact()
 	var tmp = {search:search,UserId:UserId};
 	var jsonPayload = JSON.stringify( tmp );
 
-	var url = urlBase + '/SearchContacts.' + extension;
+	var url = urlBase + '/searchContacts.' + extension;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -253,6 +278,7 @@ function searchContact()
 	{
 		xhr.onreadystatechange = function() 
 		{
+			// THIS NEEDS TO CHANGED, ONLY WORKS FOR LEINECKER'S EXAMPLE CODE
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				document.getElementById("contactSearchResult").innerHTML = "contact(s) has been retrieved";
@@ -280,84 +306,54 @@ function searchContact()
 	
 }
 
-// var userId = 0;
-// var firstName = "";
-// var lastName = "";
+function doUpdateContact()
+{
+	var ContactId = document.getElementById("ContactId").value;
 
-// function doLogin() {
-//     userId = 0;
-//     firstName = "";
-//     lastName = "";
+	// When this function is called, it should still be able to grab the old values
+	// if they remain unchanged.
+	var newFirstName = document.getElementById("FirstNameText").value;
+    var newLastName = document.getElementById("LastNameText").value;
+	var newMiddleName = document.getElementById("MiddleNameText").value;
+	var newAddress = document.getElementById("AddressText").value;
+	var newPhoneNumber = document.getElementById("PhoneNumberText").value;
+	var newEmail = document.getElementById("EmailText").value;
+	var newCompany = document.getElementById("CompanyText").value;
+	var newBirthday = document.getElementById("BirthdayText").value; 
 
-//     var login = document.getElementById("loginName").value;
-//     var password = document.getElementById("loginPassword").value;
+    //double check this later
+	document.getElementById("contactUpdateResult").innerHTML = "";
 
-//     document.getElementById("loginResult").innerHTML = "";
+	var tmp = {	FirstName:newFirstName,
+				LastName:newLastName,
+				MiddleName:newMiddleName,
+				Address:newAddress,
+				PhoneNumber:newPhoneNumber,
+				Email:newEmail,
+				Company:newCompany,
+				Birthday:newBirthday,
+				ContactId:ContactId};
 
-//     var tmp = { login: login, password: password };
-//     var jsonPayload = JSON.stringify(tmp);
+	var jsonPayload = JSON.stringify( tmp );
 
-//     var url = urlBase + '/login.' + extension;
-
-//     var xhr = new XMLHttpRequest();
-//     xhr.open("POST", url, true);
-//     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-//     try {
-//         xhr.onreadystatechange = function () {
-//             if (this.readyState == 4 && this.status == 200) {
-//                 var jsonObject = JSON.parse(xhr.responseText);
-//                 userId = jsonObject.id;
-
-//                 if (userId < 1) {
-//                     document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
-//                     return;
-//                 }
-
-//                 firstName = jsonObject.firstName;
-//                 lastName = jsonObject.lastName;
-
-//                 saveCookie();
-
-//                 window.location.href = "color.html";
-//             }
-//         };
-//         xhr.send(jsonPayload);
-//     }
-//     catch (err) {
-//         document.getElementById("loginResult").innerHTML = err.message;
-//     }
-
-// }
-
-// function saveCookie() {
-//     var minutes = 20;
-//     var date = new Date();
-//     date.setTime(date.getTime() + (minutes * 60 * 1000));
-//     document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
-// }
-
-// function readCookie() {
-//     userId = -1;
-//     var data = document.cookie;
-//     var splits = data.split(",");
-//     for (var i = 0; i < splits.length; i++) {
-//         var thisOne = splits[i].trim();
-//         var tokens = thisOne.split("=");
-//         if (tokens[0] == "firstName") {
-//             firstName = tokens[1];
-//         }
-//         else if (tokens[0] == "lastName") {
-//             lastName = tokens[1];
-//         }
-//         else if (tokens[0] == "userId") {
-//             userId = parseInt(tokens[1].trim());
-//         }
-//     }
-
-//     if (userId < 0) {
-//         window.location.href = "index.html";
-//     }
-//     else {
-//         document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
-//     }
-// }
+	var url = urlBase + '/LAMPAPI/updateContact.' + extension;
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				document.getElementById("contactUpdateResult").innerHTML = "Contact has been updated";
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("contactUpdateResult").innerHTML = err.message;
+	}
+}
