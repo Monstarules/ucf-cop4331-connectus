@@ -1,4 +1,4 @@
-]// The small humble beginnings?
+// The small humble beginnings?
 // Eventually, the JS code will go here.
 
 var urlBase = 'http://connect-us.me/LAMPAPI';
@@ -15,15 +15,15 @@ function doLogin()
 	LastName = "";
 	 
     // Change 'loginName' and 'loginPassword' if necessary, for consistency
-	var UserName = document.getElementById("loginName").value;
-	var Password = document.getElementById("loginPassword").value;
+	var UserName = document.getElementById("UserName").value;
+	var Password = document.getElementById("Password").value;
 	
 	document.getElementById("loginResult").innerHTML = "";
 
 	var tmp = {UserName:UserName,Password:Password};
 	var jsonPayload = JSON.stringify( tmp );
 	
-	var url = urlBase + '/login.' + extension;
+	var url = urlBase + '/LAMPAPI/login.' + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -66,15 +66,15 @@ function doLogin()
 
 // SIGN UP
 // NEW NECESSARY function; anyone can create a new account
-function doSignUp()
+function doRegister()
 {
             UserId = 0;
             FirstName = "";
             LastName = "";
             
             // Change 'loginName' and 'loginPassword' if we necessary, for consistency
-            var UserName = document.getElementById("loginName").value;
-            var Password = document.getElementById("loginPassword").value;
+            var UserName = document.getElementById("UserName").value;
+            var Password = document.getElementById("Password").value;
             var FirstName = document.getElementById("FirstName").value;
             var LastName = document.getElementById("LastName").value;
             
@@ -84,7 +84,7 @@ function doSignUp()
             var jsonPayload = JSON.stringify( tmp );
             
             // take them to register.php
-            var url = urlBase + '/register.' + extension;
+            var url = urlBase + '/LAMPAPI/register.' + extension;
 
             var xhr = new XMLHttpRequest();
             xhr.open("POST", url, true);
@@ -112,7 +112,7 @@ function doSignUp()
 
                         saveCookie();
             
-                        window.location.href = "../contacts/contacts.html";
+                        window.location.href = "/login.html";
                     }
                 };
                 xhr.send(jsonPayload);
@@ -258,6 +258,9 @@ function doDeleteContact()
 }
 
 
+
+
+
 // update this O_O
 function doSearchContacts()
 {
@@ -265,11 +268,14 @@ function doSearchContacts()
 	document.getElementById("contactSearchResult").innerHTML = "";
 	
 	var contactList = "";
+	var currentContact = "";
+	
+	//var contactList = "";
 
 	var tmp = {search:search,UserId:UserId};
 	var jsonPayload = JSON.stringify( tmp );
 
-	var url = urlBase + '/searchContacts.' + extension;
+	var url = urlBase + '/LAMPAPI/searchContacts.' + extension;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -278,33 +284,25 @@ function doSearchContacts()
 	{
 		xhr.onreadystatechange = function() 
 		{
-			// THIS NEEDS TO CHANGED, ONLY WORKS FOR LEINECKER'S EXAMPLE CODE
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("contactSearchResult").innerHTML = "contact(s) has been retrieved";
+				document.getElementById("displayResult").innerHTML = "Here's Da Search Results";
 				var jsonObject = JSON.parse( xhr.responseText );
-				
-				for( var i=0; i<jsonObject.results.length; i++ )
-				{
-					//watch this carefully, more likely than not it will NOT work well with our html files
-					contactList += jsonObject.results[i];
-					if( i < jsonObject.results.length - 1 )
-					{
-						contactList += "<br />\r\n";
-					}
-				}
-				
-				document.getElementsByTagName("p")[0].innerHTML = contactList;
+				generateGrid(jsonObject, UserId);	
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("contactSearchResult").innerHTML = err.message;
+		document.getElementById("displayResult").innerHTML = err.message;
 	}
 	
 }
+
+
+
+
 
 function doUpdateContact()
 {
@@ -356,4 +354,75 @@ function doUpdateContact()
 	{
 		document.getElementById("contactUpdateResult").innerHTML = err.message;
 	}
+}
+
+
+function displayContacts()
+{
+    // UserId is already a global variable!
+    //var userId = document.getElementById("UserId").value;
+	document.getElementById("displayResult").innerHTML = "";
+	
+	//var contactList = "";
+
+	var tmp = {UserId:UserId};
+	var jsonPayload = JSON.stringify( tmp );
+
+	var url = urlBase + '/LAMPAPI/displayContacts.' + extension;
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				document.getElementById("displayResult").innerHTML = "Here's Da Contacts";
+				var jsonObject = JSON.parse( xhr.responseText );
+				generateGrid(jsonObject, UserId);	
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("displayResult").innerHTML = err.message;
+	}
+}
+
+function generateGrid(jsonObject, UserId)
+{
+    var output = "<div class='row'>";
+    for(var i=0;i<jsonObject.results.length;i++)
+    {
+        if((i%3)==0)
+        {
+            output += "</div><div class='row'>" + "<div class='col-md-4'><div class=\"card\" style=\"width: 18rem;\">\
+                <img class=\"card-img-top\" src=\"...\" alt=\"Card image cap\">\
+                <div class=\"card-body\">\
+                <h5 class=\"card-title\">Card title</h5>\
+                <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\
+                <a href=\"#\" class=\"btn btn-primary\">Go somewhere</a>\
+                </div>\
+                </div></div>";
+        }
+        else
+        {
+            output += "<div class='col-md-4'><div class=\"card\" style=\"width: 18rem;\">\
+            <img class=\"card-img-top\" src=\"...\" alt=\"Card image cap\">\
+            <div class=\"card-body\">\
+            <h5 class=\"card-title\">Card title</h5>\
+            <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\
+            <a href=\"#\" class=\"btn btn-primary\">Go somewhere</a>\
+            </div>\
+            </div></div>";
+        }
+    }
+
+    if((i%3)!=0)
+    {
+        output += "</div><div class='row'>";
+    }
 }
