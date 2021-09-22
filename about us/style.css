@@ -1,0 +1,36 @@
+body::before {
+  display: block;
+  content: '';
+  height: 0px;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+  .news-input {
+    width: 50%;
+  }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 350px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.flexbox-wrapper2 > #two {
+    color: green;
+    width: 200px;
+    border: 4px;
+    border-color: black;
+
+    /* Margins */
+    margin-left: 50px;
+    margin-right: 50px;
+}
