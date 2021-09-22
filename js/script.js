@@ -1,8 +1,10 @@
 // The small humble beginnings?
 // Eventually, the JS code will go here.
 
-var urlBase = 'http://connect-us.me/LAMPAPI';
+var urlBase = 'http://connect-us.me';
 var extension = 'php';
+
+var UglyRL = "/BootstrapUI/Test"
 
 var UserId = 0;
 var FirstName = "";
@@ -41,6 +43,7 @@ function doLogin()
 		
 				if( UserId < 1 )
 				{		
+					//window.location.href = UglyRL + "/index?#";
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
 				}
@@ -51,7 +54,7 @@ function doLogin()
 				saveCookie();
 	
                 // DEFINITELY CHANGE THIS!!!!!
-				window.location.href = "contacts/contacts.html";
+				window.location.href = "UserIndex.html";
 			}
 		};
 		xhr.send(jsonPayload);
@@ -71,14 +74,30 @@ function doRegister()
             UserId = 0;
             FirstName = "";
             LastName = "";
+
+            document.getElementById("loginResult").innerHTML = "";
             
             // Change 'loginName' and 'loginPassword' if we necessary, for consistency
             var UserName = document.getElementById("UserName").value;
             var Password = document.getElementById("Password").value;
+            var ConfirmPassword = document.getElementById("ConfirmPassword").value;
             var FirstName = document.getElementById("FirstName").value;
             var LastName = document.getElementById("LastName").value;
+
+            if( UserName == "" || Password == "" || ConfirmPassword == "" || FirstName == "" || LastName == "")
+            {
+            	document.getElementById("loginResult").innerHTML = "Please do not leave any field empty";
+            	return;
+            }
+
+            if(Password != ConfirmPassword)
+            {
+            	document.getElementById("loginResult").innerHTML = "Passwords do not match";
+            	return;
+            }
+
             
-            document.getElementById("loginResult").innerHTML = "";
+            
 
             var tmp = {UserName:UserName,Password:Password,FirstName:FirstName,LastName:LastName};
             var jsonPayload = JSON.stringify( tmp );
@@ -96,10 +115,10 @@ function doRegister()
                     if (this.readyState == 4 && this.status == 200) 
                     {
                         var jsonObject = JSON.parse( xhr.responseText );
-                        UserId = jsonObject.id;
+                        let error = jsonObject.error;
                 
                         //this should be checking if the User is trying to create an acct. that already exists
-                        if( UserId > 0 )
+                        if( error == "User is already registered!")
                         {
                             document.getElementById("loginResult").innerHTML = "User already exists";
                             return;
@@ -107,12 +126,12 @@ function doRegister()
 
 
                 
-                        FirstName = jsonObject.FirstName;
-                        LastName = jsonObject.LastName;
+                        // FirstName = jsonObject.FirstName;
+                        // LastName = jsonObject.LastName;
 
-                        saveCookie();
+                        //saveCookie();
             
-                        window.location.href = "/login.html";
+                        window.location.href = "index.html";
                     }
                 };
                 xhr.send(jsonPayload);
@@ -157,7 +176,7 @@ function readCookie()
 	
 	if( UserId < 0 )
 	{
-		window.location.href = "index.html";
+		window.location.href = UglyRL + "index.html";
 	}
 	else
 	{
@@ -223,8 +242,8 @@ function addContact()
 	{
 		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
-	
 }
+
 
 function doDeleteContact()
 {
