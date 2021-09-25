@@ -1,61 +1,70 @@
-<!-- This is the main index page of the project. Here, is what a person sees when first accessing the website. -->
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ConnectUs - Connecting Everyone</title>
 
-<html>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css" rel="stylesheet">
 
-<head>
-	<script type="text/javascript" src="js/script.js"></script>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-	<title>ConnectUs - Connecting Everyone</title>
-	<!-- Extern. stylesheet -->
-	<link rel="stylesheet" href="css\styles.css">
-	</link>
-</head>
+    <script type="text/javascript" src="js/script.js"></script>
 
-<body>
-	<!-- Let's use flexboxes. -->
-	<div class="flexbox-wrapper1">
-		<div id="one">
-			<h1>ConnectUs</h1>
-			<span id="everyone">
-				<h2>Connecting you to everyone</h2>
-			</span>
-		</div>
-	</div>
-	<div class="flexbox-wrapper2">
-		<div id="two">
-			<div class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle navbar-light bg-light" href="#" id="dropdownMenu2" role="button" data-bs-toggle="dropdown"
-					aria-expanded="false">
-					Navigation
-				</a>
-				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-				<ul><a href="account overview/account.html" class="dropdown-item">Account Overview</a></ul>
-				<ul><a href="contacts/contacts.html" class="dropdown-item">Contacts</a></ul>
-				<ul><b class="dropdown-item">Main Page</b></ul>
-				<ul><a href="login.html" class="dropdown-item">Login</a></ul>
-				<ul><a href="create account/create.html" class="dropdown-item">Create Account</a></ul>
-				<ul><a href="about us/about.html" class="dropdown-item">About Us</a></ul>
-				</div>
-		</div>
-		<div id="three">Main</div>
-		<div id="two"></div>
-	</div>
-	<div class="flexbox-wrapper3">
-		<div id="four">
-			<h1 style="font-size: x-large;">COP 4331C Fall 2021 Small Project </h1>
-			<h2 style="font-size: large;">ConnectUs</h2>
-			<p>This page is an open source project intended only for demnonstration and not for official use or distribution.
-				<br><strong>Developers:</strong> Orion Schyberg, Rafael Vega, Eric Hartwell, Brandon Rubio, Kevin Abreu</br>
-				<strong>Github:</strong> https://github.com/Monstarules/ucf-cop4331-connectus/
-			</p>
-		</div>
-	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-		crossorigin="anonymous"></script>
-</body>
-
+  </head>
+  <body class="text-center" style="background-color: #282729">
+    <div class="form-signin"> 
+      <form> 
+        <div class="container-fluid">
+          <div class="row text-center">
+            <div class="col-sm">
+              <h1 class="h1 text-center" style="font-size: 75px; margin-left: -40px; text-shadow: 0 0 5px #ddeee5"><span style="color: #0954d6">Connect</span><span style="color: #8DC5A7">Us</span></h1>
+              <h3 class="h3 text-center" style="font-size: 25px; margin-left: -23px; color: #8DC5A7; text-shadow: 0 0 5px">Connecting you to everyone</h3>
+            </div>
+          </div>
+          <div class="row-sm-10">
+            <div class="col-sm">
+              <div class="card" style="width: 375px; margin-top: 75px; margin-left: -45px; box-shadow: 0px 7px 5px #8DC5A7;">
+                <div class="card-body" style="background-color: #ddeee5;">
+                  <h3 class="card-title" style="font-weight: 900; border-color: #ddeee5; color: #4d9970; margin-top: 10px; margin-bottom: 35px;">Please Sign In</h3>
+                  <!-- username form -->
+                  <div class="form-floating">
+                    <input class="form-control" type="username"  id="UserName" placeholder="username">
+                    <label for="UserName" style="opacity: 0.5;">Username</label>
+                  </div>
+                  <!-- password form -->
+                  <div class="form-floating">
+                    <input class="form-control" type="password" id="Password" placeholder="Password" onkeypress="return searchKeyPressLogin(event);" />
+                    <!-- <input type="password" class="form-control" id="Password" placeholder="password"> -->
+                    <label for="Password" style="opacity: 0.5;">Password</label>
+                  </div>
+                  <!-- sign in button -->
+                  <input class="w-100 btn btn-lg btn-primary" type="button" id="btnLogin" Value="Sign in" onclick="doLogin();" />
+                  <!-- <button class="w-100 btn btn-lg btn-primary" type="button" onclick="doLogin();">Sign in</button> -->
+                  <p class="card-text" style="margin-top: 20px;">Don't have an account? <a href="RegisterUser.html" class="card-link" style="color: #4d9970;">Sign up</a>
+                  </p>
+                  <span id="loginResult"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script>
+      function searchKeyPressLogin(e)
+      {
+        // look for window.event in case event isn't passed in
+        e = e || window.event;
+        if (e.keyCode == 13)
+        {
+          document.getElementById('btnLogin').click();
+          return false;
+        }
+        return true;
+      }
+      </script>
+  </body>
 </html>
-

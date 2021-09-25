@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>ConnectUs - Register</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    
+    <!-- Custom styles for this template -->
+    <link href="css/register.css" rel="stylesheet">
+
+    <script type="text/javascript" src="js/script.js"></script>
+  </head>
+  <body class="text-center" style="background-color: #282729">
+    <div class="form-signin"> 
+      <form> 
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+                <div class="card" style="width: 450px; box-shadow: 0px 7px 5px #8dc5a7; margin-left: -70px; margin-top: -100px;">
+                    <div class="card-body" style="background-color: #ddeee5;">
+                      <h3 class="card-title" style="font-weight: 900; border-color: #ddeee5; color: #4d9970; margin-top: 10px; margin-bottom: 35px;">Enter Your Information</h3>
+                      <!-- FirstName form -->
+                      <div class="form-floating" style="margin-top: 0px">
+                        <input type="text" class="form-control" id="FirstName" placeholder="FirstName">
+                        <label for="FirstName" style="opacity: 0.5;">First Name</label>
+                      </div>
+                      <!-- LastName form -->
+                      <div class="form-floating" style="margin-top: 4px">
+                        <input type="text" class="form-control" id="LastName" placeholder="LastName">
+                        <label for="LastName" style="opacity: 0.5;">Last Name</label>
+                      </div>
+                      <!-- username form -->
+                      <div class="form-floating" style="margin-top: 4px">
+                          <input type="text" class="form-control" id="UserName" placeholder="UserName">
+                          <label for="UserName" style="opacity: 0.5;">Username</label>
+                      </div>
+                      <!-- password form -->
+                      <div class="form-floating" style="margin-top: 4px">
+                          <input type="password" class="form-control" id="Password" placeholder="Password">
+                          <label for="Password" style="opacity: 0.5;">Password</label>
+                      </div>
+                      <!-- confirm password form -->
+                      <div class="form-floating" style="margin-top: -5px">
+                          <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirm Password">
+                          <label for="confirmPassword" style="opacity: 0.5;">Confirm Password</label>
+                      </div>
+                      <!-- sign in button -->
+                      <button class="w-100 btn btn-lg btn-primary" type="button" onclick="doRegister();" style="margin-top: 15px">Register!</button>
+                      <span id="loginResult"></span>
+                      <p class="card-text" style="margin-top: 20px;">Changed your mind? <a href="index.html" class="card-link" style="color: #4d9970;">Return</a>
+                      </p>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConnectUs - Account Information</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <!-- Custom styles for this template -->
+  
+    <script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <div class="container-fluid" style=" width:100%; padding:15px 0px 15px 15px;">
+      <a href="#" class="navbar-brand" style="font-size: 25px; margin-top: -7px;"><span style="color: #0954d6">Connect</span><span style="color: #8DC5A7">Us</span></a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="" class="nav-link" style="margin-right: 5px;">Account</a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link" style="margin-right: 10px;">All Contacts</a>
+          </li>
+          
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input id="sBar" class="form-control-sm" type="search" placeholder="Search" aria-label="Search" style="width: 400px;" onmouseover="mouseIn()" onmouseout="mouseOut()">
+          <button type="button" class="btn btn-outline-success my-2 my-sm-0" style="margin-left: 10px" onclick="superfunction()">Search</button>
+        </form>
+        <button type="button" class="btn float-right btn-outline-danger my-2 my-sm-0" style="margin-left: auto; margin-right: 15px">Logout</button>
+      </div>
+    </div>
+</nav>
+</body>
+<body>
+  <div class="container">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Employee
+          </div>
+          <div class="panel-body">
+            <table class="table table-condensed table-striped">
+      <thead>
+          <tr>
+            <th></th>
+            <th>Fist Name</th>
+            <th>Last Name</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Status</th>
+          </tr>
+      </thead>
+  
+      <tbody>
+          <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
+             <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+              <td>Carlos</td>
+              <td>Mathias</td>
+              <td>Leme</td>
+              <td>SP</td>
+              <td>new</td>
+          </tr>
+        
+          <tr>
+              <td colspan="12" class="hiddenRow">
+                <div class="accordian-body collapse" id="demo1"> 
+                <table class="table table-striped">
+                        <thead>
+                          <tr class="info">
+                            <th>Job</th>
+                            <th>Company</th>
+                            <th>Salary</th>		
+                            <th>Date On</th>	
+                            <th>Date off</th>	
+                            <th>Action</th>	
+                          </tr>
+                        </thead>	
+                        
+                        <tbody>
+                          
+                          <tr data-toggle="collapse"  class="accordion-toggle" data-target="#demo10">
+                            <td> <a href="#">Enginner Software</a></td>
+                            <td>Google</td>
+                            <td>U$8.00000 </td>
+                            <td> 2016/09/27</td>
+                            <td> 2017/09/27</td>
+                            <td> 
+                              <a href="#" class="btn btn-default btn-sm">
+                                    <i class="glyphicon glyphicon-cog"></i>
+                                </a>
+                            </td>
+                          </tr>
+                          
+                           <tr>
+              <td colspan="12" class="hiddenRow">
+                <div class="accordian-body collapse" id="demo10"> 
+                <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <td><a href="#"> XPTO 1</a></td>
+                            <td>XPTO 2</td>
+                            <td>Obs</td>
+                          </tr>
+                          <tr>
+                            <th>item 1</th>
+                            <th>item 2</th>
+                            <th>item 3 </th>
+                            <th>item 4</th>
+                            <th>item 5</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>item 1</td>
+                            <td>item 2</td>
+                            <td>item 3</td>
+                            <td>item 4</td>
+                            <td>item 5</td>
+                            <td>
+                                <a href="#" class="btn btn-default btn-sm">
+                                  <i class="glyphicon glyphicon-cog"></i>
+                                </a>
+                            </td>
+                          </tr>
+                        </tbody>
+                   </table>
+                
+                </div> 
+            </td>
+          </tr>
+                                                      
+                          <tr>
+                            <td>Scrum Master</td>
+                            <td>Google</td>
+                            <td>U$8.00000 </td>
+                            <td> 2016/09/27</td>
+                            <td> 2017/09/27</td>
+                            <td> <a href="#" class="btn btn-default btn-sm">
+                                    <i class="glyphicon glyphicon-cog"></i>
+                                </a>
+                            </td>
+                          </tr>
+                          
+                              
+                          <tr>
+                            <td>Back-end</td>
+                            <td>Google</td>
+                            <td>U$8.00000 </td>
+                            <td> 2016/09/27</td>
+                            <td> 2017/09/27</td>
+                            <td> <a href="#" class="btn btn-default btn-sm">
+                                    <i class="glyphicon glyphicon-cog"></i>
+                                </a>
+                            </td>
+                          </tr>
+                          
+                              
+                          <tr>
+                            <td>Front-end</td>
+                            <td>Google</td>
+                            <td>U$8.00000 </td>
+                            <td> 2016/09/27</td>
+                            <td> 2017/09/27</td>
+                            <td> <a href="#" class="btn btn-default btn-sm">
+                                    <i class="glyphicon glyphicon-cog"></i>
+                                </a>
+                            </td>
+                          </tr>
+                  
+                 
+                        </tbody>
+                   </table>
+                
+                </div> 
+            </td>
+          </tr>
+        
+        
+        
+          <tr data-toggle="collapse" data-target="#demo2" class="accordion-toggle">
+               <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+               <td>Silvio</td>
+              <td>Santos</td>
+              <td>São Paulo</td>
+              <td>SP</td>
+            <td> new</td>
+          </tr>
+          <tr>
+              <td colspan="6" class="hiddenRow"><div id="demo2" class="accordian-body collapse">Demo2</div></td>
+          </tr>
+          <tr data-toggle="collapse" data-target="#demo3" class="accordion-toggle">
+              <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+              <td>John</td>
+              <td>Doe</td>
+              <td>Dracena</td>
+              <td>SP</td>
+            <td> New</td>
+          </tr>
+          <tr>
+              <td colspan="6" class="hiddenRow"><div id="demo3" class="accordian-body collapse">Demo3 sadasdasdasdasdas</div></td>
+          </tr>
+      </tbody>
+  </table>
+              </div>
+          
+            </div> 
+          
+        </div>
+    </div>
+</body>
+</html>

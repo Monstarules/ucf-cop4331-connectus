@@ -27,9 +27,9 @@
         {
             returnWithInfo("Contact Deleted.");
         }
-        $stmt->close();
-        $conn->close();
     }
+    $stmt->close();
+    $conn->close();
 
 
     // All below functions are directly from Dr. Leinecker,

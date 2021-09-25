@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UserIndex.html</title>
+  
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <!-- Custom styles for this template -->
+  <link href="style.css" rel="stylesheet">
+
+  <script type="text/javascript" src="js/script.js"></script>
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <div class="container-fluid" style=" width:100%; padding:15px 0px 15px 15px;">
+      <a href="#" class="navbar-brand" style="font-size: 25px; margin-top: -7px;">ConnectUs</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="" class="nav-link" style="margin-right: 5px;">Account</a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link" style="margin-right: 10px;">All Contacts</a>
+          </li>
+          
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control-sm" type="search" placeholder="Search" aria-label="Search" style="width: 400px;">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <button type="button" class="btn float-right btn-outline-danger my-2 my-sm-0"
+          style="margin-left: auto; margin-right: 15px">Logout</button>
+      </div>
+    </div>
+</nav>
+<div class="container-fluid">
+  <!--Add Cards for each of the team members-->
+  <div class="d-flex p-2">
+    <div class="card" style="margin-bottom: 10px;">
+      <img src="../images/kevin.jpg" class="img-fluid" alt="Kevin" style="align-self:center; width: 300px; margin: 10px;">
+      <h2>Kevin Abreu</h2>
+      <p class="title">Front End</p>
+      <p>University of Central Florida</p>
+      <a href="https://github.com/kevinab25" style="color: #4d9970; text-decoration: none;">Github</a>
+      <p><svg href="https://github.com/kevinab25" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+          fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+          <path
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+        </svg>
+      </p>
+      <!-- Add functionality to button: Should prompt open a mail window with the correct email -->
+      <button type="button" class="btn btn-dark">Contact</button>    
+    </div>
+    <div class="card" style="margin-bottom: 10px;">
+      <img src="../images/Orion.png" class="img-fluid" alt="Orion" style="align-self: center; width: 300px; margin: 10px;">
+      <h2>Orion Schyberg</h2>
+      <p class="title">Project Manager</p>
+      <p>University of Central Florida</p>
+      <a href="https://github.com/Monstarules" style="color: #4d9970; text-decoration: none;">Github</a>
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github"
+          viewBox="0 0 16 16">
+          <path
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+        </svg></p>
+              <!-- Add functionality to button: Should prompt open a mail window with the correct email -->
+      <button type="button" class="btn btn-dark">Contact</button>
+    </div>
+    <div class="card" style="margin-bottom: 10px;">
+      <img src="#" alt="Eric" class="img-fluid" style="align-self: center; width: 100%; margin: 10px;">
+      <h2>Eric Hartwell</h2>
+      <p class="title">Database</p>
+      <p>University of Central Florida</p>
+      <a href="https://github.com/glerichartwell" style="color: #4d9970; text-decoration: none;">Github</a>
+      <p><svg href="#" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github"
+          viewBox="0 0 16 16">
+          <path
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+        </svg></p>
+      <!-- Add functionality to button: Should prompt open a mail window with the correct email -->
+      <button type="button" class="btn btn-dark">Contact</button>
+    </div>
+  </div>
+  <div class="d-flex p-2">
+    <div class="card" style="margin-bottom: 10px;">
+      <img src="../images/brandon.jpg" alt="Brandon" class="img-fluid" style="align-self: center; width: 100%; margin: 10px;">
+      <h2>Brandon Rubio</h2>
+      <p class="title">API</p>
+      <p>University of Central Florida</p>
+      <a href="https://github.com/landoniwnl" style="color: #4d9970; text-decoration: none;">Github</a>
+      <p><svg href="#" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github"
+          viewBox="0 0 16 16">
+          <path
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+        </svg></p>
+      <button type="button" class="btn btn-dark">Contact</button>
+    </div>
+    <div class="card" style="margin-bottom: 10px;">
+      <img src="#" alt="Rafael Vega" class="img-fluid" style="align-self: center; width: 300px; margin: 10px;">
+      <h2>Rafael Vega</h2>
+      <p class="title">API</p>
+      <p>University of Central Florida</p>
+      <a href="https://github.com/RafaelVCS" style="color: #4d9970; text-decoration: none;">Github</a>      
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github"
+          viewBox="0 0 16 16">
+          <path
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+        </svg></p>
+      <button type="button" class="btn btn-dark">Contact</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

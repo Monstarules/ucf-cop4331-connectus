@@ -33,9 +33,9 @@
             returnWithError("Registration Successful!");
         }
 
-        $stmt->close();
-        $conn->close();
     }
+    $stmt->close();
+    $conn->close();
 
     function getRequestInfo()
     {
